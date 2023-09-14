@@ -1,13 +1,13 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  sequelize.define('Country', {
+  sequelize.define("Country", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     id: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(3),
       primaryKey: true,
     },
     imageFlag: {
@@ -26,11 +26,11 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     area: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
     },
     population: {
       type: DataTypes.INTEGER,
       allowNull: false,
     }
-  }, { timestamps: false });
+  }, { timestamps: false }); 
 };

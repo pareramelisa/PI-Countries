@@ -1,11 +1,18 @@
-const { Router } = require("express");
+const getActivities = require('../controllers/getActivities');
+const getAllCountries = require('../controllers/getAllCountries')
+const getCountriesById = require("../controllers/getCountriesById")
+const getCountriesByName = require("../controllers/getCountriesByName");
+const postActivities = require('../controllers/postActivities');
+require("dotenv").config();
 
-// const countriesRouter = require("./countriesRouter")
-// const activitiesRouter = require("./activitiesRouter")
+const router = require('express').Router()
 
-const router = Router();
+router.get("/countries/name", getCountriesByName)
+router.get("/countries/:idPais", getCountriesById)
+router.get("/countries", getAllCountries)
 
-// router.use("/countries", countriesRouter)
-// router.use("/activities", activitiesRouter)
+router.post("/activities", postActivities)
+router.get("/activities", getActivities)
+
 
 module.exports = router;

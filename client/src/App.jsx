@@ -1,15 +1,17 @@
-import { Routes, Route} from 'react-router-dom'
-import LandingPage from './components/LandingPage'
+import { Routes, Route, useLocation} from 'react-router-dom'
+import LandingPage from './components/LandingPage/LandingPage'
 import Countries from './components/Countries'
-import Card from './components/Card'
 import CountryDetail from './components/CountryDetail'
 import Nav from './components/Nav/Nav'
 import './App.css'
 
 function App() {
 
+  const location = useLocation()
+
   return (
     <div>
+      {location.pathname !== '/' && <Nav/>}
       <Routes>
         <Route path="/" element={<LandingPage />}> </Route>
         <Route path="/countries" element={<Countries />}> </Route>

@@ -1,0 +1,15 @@
+.contenedor {
+    display: flex;
+    padding: 0px;
+    margin: 0%;
+    
+    
+}
+
+.image{
+    display: flex;
+    align-self: flex-start;
+    width: 600px;
+    height: 650px;
+    
+}

@@ -10,14 +10,14 @@ function App() {
   const location = useLocation()
 
   return (
-    <div>
+    <>
       {location.pathname !== '/' && <Nav/>}
       <Routes>
         <Route path="/" element={<LandingPage />}> </Route>
         <Route path="/countries" element={<Countries />}> </Route>
         <Route path="/countries/:id" element={<CountryDetail />}> </Route>
       </Routes>
-    </div>
+    </>
   );
 }
 

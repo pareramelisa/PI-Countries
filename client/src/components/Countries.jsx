@@ -10,7 +10,7 @@ import Nav from "./Nav/Nav"
 const Countries = () => {
 
     const dispatch = useDispatch()
-    const countries = useSelector((state) => state.allCountries)
+    const countries = useSelector((state) => state.countries)
 
     const [orden, setOrden] = useState('')
     const [paginaActual, setPaginaActual]  = useState(1);
@@ -104,7 +104,6 @@ const Countries = () => {
 
         {paisesPActual.map((country) => {
           return (
-            <nav>
               <Card
                 imageFlag={country.imageFlag}
                 name={country.name}
@@ -112,7 +111,6 @@ const Countries = () => {
                 id={country.id}
                 key={country.id}
               />
-            </nav>
           );
         })}
 

@@ -9,9 +9,11 @@ const LandingPage = () => {
        </div>
       
       <div className={style.form}>
-        <h1>¡Bienvenido a mi aplicación de países!</h1>
+        <img src="/tourify.PNG" alt="not found" />
+        <h1>Tourify</h1>
+        <h2> <p>Descubrí el mundo</p> <p>Creá experiencias únicas</p></h2>
         <Link to="/countries">
-          <button>¡Comencemos!</button>
+          <button>¿Dónde te gustaría ir?</button>
         </Link>
       </div>
 

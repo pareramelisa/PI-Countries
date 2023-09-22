@@ -1,4 +1,4 @@
-import { GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL, GET_COUNTRY_BY_NAME, ORDER_BY_NAME, ORDER_BY_POBLATION, FILTER_BY_CONTINENT} from "./actions"
+import { GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL, GET_COUNTRY_BY_NAME, ORDER_BY_NAME, ORDER_BY_POBLATION, FILTER_BY_CONTINENT, GET_ACTIVITIES, FILTER_BY_ACTIVITIES} from "./actions"
 
 const initialState = {   
     countries: [],      
@@ -76,14 +76,38 @@ function rootReducer(state = initialState, action) {
 
       case FILTER_BY_CONTINENT:
         const paises = state.allCountries;
-        const paisesFiltered = action.payload === "" ? state.allCountries 
+        const paisesFiltered = action.payload === "All" ? state.allCountries 
         : paises.filter(pais => pais.continent === action.payload );
         return {...state, 
           countries: paisesFiltered}
 
-      default:
-        return { ...state };
-    }
-}
+      case GET_ACTIVITIES:
+        return {
+          ...state,
+          activities: action.payload,
+          allActivities: action.payload,
+        }
 
+      case FILTER_BY_ACTIVITIES:
+
+        const countriesActivities = state.allCountries
+        const paisesFiltrados = countriesActivities.filter((country) => {return country.activities?.find((country) => {return country.name === action.payload})})
+
+      if (action.payload === "All") {
+        return { ...state, 
+            countries: state.allCountries }
+      } else {
+          return {
+              ...state,
+              countries: paisesFiltrados
+          }
+      }
+
+        
+        default:
+          return { ...state };
+        }
+      }
+      
+      
 export default rootReducer

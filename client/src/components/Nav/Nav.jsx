@@ -5,7 +5,9 @@ import style from "./Nav"
 const Nav = () => {
   return (
     <div className={style.nav}>
-      <button className={style.btn}>Activities</button>
+      <Link to="/countries/create">
+        <button className={style.btn}>Activities</button>
+      </Link>
       <div>
         <SearchBar/>
       </div>

@@ -7,6 +7,8 @@ export const ORDER_BY_POBLATION = 'ORDER_BY_POBLATION'
 export const FILTER_BY_CONTINENT = 'FILTER_BY_CONTINENT'
 export const GET_ACTIVITIES = 'GET_ACTIVITIES'
 export const FILTER_BY_ACTIVITIES = "FILTER_BY_ACTIVITIES"
+export const CREATE_ACTIVITY = 'CREATE_ACTIVITY'
+
 
 export function getAllCountries() {
     return async function (dispatch) {
@@ -98,3 +100,12 @@ export const filterByActivities = (payload) =>{
         payload
         }
     }
+
+    export const createActivity = (input) =>{
+        return async function(dispatch) {
+        await axios.post("http://localhost:3001/activities", input)
+            return dispatch({
+                type: CREATE_ACTIVITY
+            })
+    }}
+    

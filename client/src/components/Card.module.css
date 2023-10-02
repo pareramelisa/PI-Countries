@@ -1,13 +1,19 @@
-.nav{
-    background-color: rgba(255, 255, 255, 0.397);
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    height: 100px;
+.cardContenedor{
+    background-color: #9dbddbd0;
+    padding: 40px;
+    margin: 40px;
+    position: relative;
+    min-width: 235px;
+    border: 10px;
+    border-radius: 10px;
+   box-shadow: 30px;
 }
 
-.btn {
+.cardContenedor img{
+    border-radius: 10px;
+}
+
+.button {
     background: #f06ed2;
     background-image: -webkit-linear-gradient(top, #f06ed2, #61a5e0);
     background-image: -moz-linear-gradient(top, #f06ed2, #61a5e0);
@@ -16,35 +22,30 @@
     background-image: linear-gradient(to bottom, #f06ed2, #61a5e0);
     -webkit-border-radius: 12;
     -moz-border-radius: 12;
-    border-radius: 12px;
+    border-radius: 5px;
     -webkit-box-shadow: 0px 0px 0px #ffffff;
     -moz-box-shadow: 0px 0px 0px #ffffff;
     box-shadow: 0px 0px 0px #ffffff;
     font-family: Arial;
     color: #ffffff;
-    font-size: 18px;
+    font-size: 20px;
     padding: 8px 20px 8px 20px;
     text-decoration: none;
-    margin-top: 20px;
   }
   
-  .btn:hover {
+  .button:hover {
     background: #58a7e3;
     text-decoration: none;
   }
 
-.logo{
-    flex: 1;
-    margin-left: 10%;
-    
+.name{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 30px;
+    text-shadow: 1px 4px 4px rgba(67,64,64,0.4);
+    color: rgb(22, 22, 22);
 }
 
-.logo img{
-    width: 200px;
-    height: auto;
-}
-
-.searchbar{
-  margin-left: 23%;
-  margin-top: 28px;
+.continent{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
 }

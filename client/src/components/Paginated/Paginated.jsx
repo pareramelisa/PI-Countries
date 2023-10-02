@@ -1,25 +1,35 @@
-const Paginated = ( {paisesPagina, paises, paginado} ) => {
-    const numPags = [];
+import style from "./Paginated.module.css";
 
-    for (let i = 0; i <= Math.ceil(paises / paisesPagina); i++) {
-        numPags.push(i + 1)}
-        
-      numPags.pop();
+const Paginated = ({ paisesPagina, paises, paginado }) => {
+  //valores que pasamos por props desestructuradas que vienen del componente countries
+  const numPags = [];
 
-      return(
-        <nav>
-            <div>
-                {numPags &&
-                numPags.map(num =>{
-                  return  <div key={num}>
-                    <button onClick={()=>{paginado(num)}}>{num}</button>
-                    </div>
-             })}
-            </div>
-        </nav>
-    )
+  for (let i = 0; i <= Math.ceil(paises / paisesPagina); i++) {
+    numPags.push(i + 1);
+  }
 
-}
+  numPags.pop();
 
+  return (
+    <nav className={style.paginado}>
+      <div className={style.paginadoList}>
+        {numPags &&
+          numPags.map((num) => {
+            return (
+              <div className={style.button} key={num}>
+                <button
+                  onClick={() => {
+                    paginado(num);
+                  }}
+                >
+                  {num}
+                </button>
+              </div>
+            );
+          })}
+      </div>
+    </nav>
+  );
+};
 
-export default Paginated
+export default Paginated;

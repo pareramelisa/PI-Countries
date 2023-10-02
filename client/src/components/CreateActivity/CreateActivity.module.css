@@ -1,0 +1,169 @@
+.background{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  flex-direction: row;
+  background-color: #b1c8ddd0;
+  height: auto;
+  width: 100%;
+  background-size: cover;
+  background-repeat: repeat;
+  padding-bottom: 10%;
+  padding-top: 150px;
+}
+
+.form{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: end;
+    padding: 20px;
+    background-color: #9dbddbd0;
+    border-radius: 20px;
+    padding-right: 700px;
+    
+}
+.inputContainer{
+
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+
+}
+
+.label{
+  display: block;
+  width: 80px;
+  padding-right: 30px;
+  font-size: 20px;
+}
+
+.input{
+    border-radius: 10px;
+    padding: 8px;
+    width: 250px;
+    
+}
+
+.select{
+    padding: 9px;
+    border-radius: 10px;
+    width: 250px;
+    font-size: 18px;
+}
+
+.buttonCreate {
+	background: #f06ed2;
+	background-image: -webkit-linear-gradient(top, #f06ed2, #61a5e0);
+	background-image: -moz-linear-gradient(top, #f06ed2, #61a5e0);
+	background-image: -ms-linear-gradient(top, #f06ed2, #61a5e0);
+	background-image: -o-linear-gradient(top, #f06ed2, #61a5e0);
+	background-image: linear-gradient(to bottom, #f06ed2, #61a5e0);
+	-webkit-border-radius: 12;
+	-moz-border-radius: 12;
+	border-radius: 12px;
+	-webkit-box-shadow: 0px 0px 0px #ffffff;
+	-moz-box-shadow: 0px 0px 0px #ffffff;
+	box-shadow: 0px 0px 0px #ffffff;
+	font-family: Arial;
+	color: #ffffff;
+	font-size: 23px;
+	padding: 8px 20px 8px 20px;
+	text-decoration: none;
+  width: 15vw;
+  height: 6vh;
+	
+  }
+  
+  .buttonCreate:hover {
+	background: #58a7e3;
+	text-decoration: none;
+  }
+
+  .buttonRemove {
+	background: #dd3d3d;
+	-webkit-border-radius: 12;
+	-moz-border-radius: 12;
+	border-radius: 12px;
+	-webkit-box-shadow: 0px 0px 0px #ffffff;
+	-moz-box-shadow: 0px 0px 0px #ffffff;
+	box-shadow: 0px 0px 0px #ffffff;
+	font-family: Arial;
+	color: #ffffff;
+	font-size: 18px;
+	padding: 8px 20px 8px 20px;
+	text-decoration: none;
+	
+  }
+  
+  .buttonRemove:hover {
+	background: #b33535;
+	text-decoration: none;
+  }
+
+  .x {
+  -webkit-border-radius: 12;
+  -moz-border-radius: 12;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 0px #ffffff;
+  -moz-box-shadow: 0px 0px 0px #ffffff;
+  box-shadow: 0px 0px 0px #ffffff;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 10px;
+  text-decoration: none;
+  width: 20px;
+  height: 30px;
+  background: #dd3d3d;
+  
+}
+
+.x:hover {
+  background: #b33535;
+  text-decoration: none;
+}
+
+.buttonCreate:disabled {
+  background: gray;
+  text-decoration: none;
+  cursor: no-drop;
+}
+
+
+.paisId{
+    text-decoration: none;
+    list-style: none;
+    background: #dd3d3d;
+    padding: 5px;
+    color: white;
+    margin: 3px;
+}
+
+.paisIdContainer{
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+}
+
+.errors{
+    text-decoration: none;
+    list-style: none;
+}
+
+.buttonContainer{
+  padding-top: 35px;
+}
+
+/* .imageContainer{
+  background-color: #1c3144;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.imageContainer img{
+  max-width: 100%;
+  margin-right: 10px;
+} */

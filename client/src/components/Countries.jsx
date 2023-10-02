@@ -1,50 +1,54 @@
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getAllCountries, orderByName, orderByPoblation, filterByContinent, getActivities, filterByActivities} from "../redux/actions"
+import {
+  getAllCountries,
+  orderByName,
+  orderByPoblation,
+  filterByContinent,
+  getActivities,
+  filterByActivities,
+} from "../redux/actions";
 import { useState } from "react";
 import Card from "./Card";
 import Paginated from "./Paginated/Paginated";
+import style from "./Countries.module.css";
 
 const Countries = () => {
+  const dispatch = useDispatch();
+  const countries = useSelector((state) => state.countries); //traemos el estado con todos los paises
+  const activities = useSelector((state) => state.activities); //traemos el estado con todas las actividades
 
-    const dispatch = useDispatch()
-    const countries = useSelector((state) => state.countries)
-    const activities = useSelector((state) => state.activities)
+  const [orden, setOrden] = useState("");
+  const [paginaActual, setPaginaActual] = useState(1);
+  const [paisesPagina, setPaisesPagina] = useState(10);
+  const indexLastPais = paginaActual * paisesPagina; //paginado ?
+  const indexPrimerPais = indexLastPais - paisesPagina;
+  const paisesPActual = countries.slice(indexPrimerPais, indexLastPais);
 
-    const [orden, setOrden] = useState('')
-    const [paginaActual, setPaginaActual]  = useState(1);
-    const [paisesPagina, setPaisesPagina] = useState(10);
-    const indexLastPais = paginaActual * paisesPagina;
-    const indexPrimerPais = indexLastPais - paisesPagina;
-    const paisesPActual = countries.slice(indexPrimerPais, indexLastPais);
+  const paginado = (numeroPagina) => {
+    setPaginaActual(numeroPagina);
+  };
 
-    const paginado = (numeroPagina) =>{
-      setPaginaActual(numeroPagina);
+  useEffect(() => {
+    dispatch(getAllCountries());
+    dispatch(getActivities());
+  }, [dispatch]);
+
+  function handleOrderName(event) {
+    event.preventDefault(); // evitamos que el boton haga un submit del formulario cuando se hace click                                                 // submit significa que el navegador va a enviar los datos del formulario a un servidor, en este caso no queremos eso
+    if (event.target.value === "") {
+      dispatch(getAllCountries());
     }
+    dispatch(orderByName(event.target.value)); //despacha la action order by name
+    setPaginaActual(1);
+    setOrden(`${event.target.value}`);
+  }
 
-    useEffect(() => {                                                        
-        dispatch(getAllCountries())     
-        dispatch(getActivities())                                                                               
-      }, [dispatch])
-
-      if (!countries) {
-        return <div>Loading...</div>
-    }
-
-    function handleOrderName(event){
-      event.preventDefault();                                                     // evitamos que el boton haga un submit del formulario cuando se hace click                                                 // submit significa que el navegador va a enviar los datos del formulario a un servidor, en este caso no queremos eso  
-      if (event.target.value === "") {                                           // no queremos eso porque no tenemos un servidor, y no queremos que el navegador haga un refresh de la pagina
-        dispatch(getAllCountries());
-      }
-      dispatch(orderByName(event.target.value));
-      setPaginaActual(1);
-      setOrden(`Ordenado ${event.target.value}`);
-    }
-
-  function handleOrderPob(event){
-    event.preventDefault();                                                     // evitamos que el boton haga un submit del formulario cuando se hace click                                                 // submit significa que el navegador va a enviar los datos del formulario a un servidor, en este caso no queremos eso  
-    if (event.target.value === "") {                                           // no queremos eso porque no tenemos un servidor, y no queremos que el navegador haga un refresh de la pagina
+  function handleOrderPob(event) {
+    //en todos los handlers le vamos a decir que si el valude el select es un string vacio los daspeche todos los paises y si no que nos muestre en la pagina actual los paises ordenados
+    event.preventDefault();
+    if (event.target.value === "") {
       dispatch(getAllCountries());
     }
     dispatch(orderByPoblation(event.target.value));
@@ -52,29 +56,32 @@ const Countries = () => {
     setOrden(`Ordenado ${event.target.value}`);
   }
 
-  function handleFilterContinent(event) {                                           // funcion que se ejecuta cuando se hace click en el boton de filtrar por continente
-    event.preventDefault();                                                     // evitamos que el boton haga un submit del formulario cuando se hace click                                                 // submit significa que el navegador va a enviar los datos del formulario a un servidor, en este caso no queremos eso  
-    if (event.target.value === "x") {                                           // no queremos eso porque no tenemos un servidor, y no queremos que el navegador haga un refresh de la pagina
+  function handleFilterContinent(event) {
+    event.preventDefault();
+    if (event.target.value === "All") {
       dispatch(getAllCountries());
     }
-    dispatch(filterByContinent(event.target.value));                          // despachamos la accion filterByContinent, pasandole como parametro el valor del boton que se hizo click
-    setPaginaActual(1)                                                    // cambiamos el estado local de la pagina actual a 1, para que se muestre la primera pagina
+    dispatch(filterByContinent(event.target.value));
+    setPaginaActual(1);
   }
 
   const handleFilterByActivities = (event) => {
     event.preventDefault();
-    console.log(activities)
     if (event.target.value === "All") {
       dispatch(getAllCountries());
     }
     dispatch(filterByActivities(event.target.value));
     setPaginaActual(1);
-   };
+  };
 
-    return (
-      <div>
+  return (
+    <div>
+      <div className={style.contenedorFilter}>
         <div>
-          <select onChange={(event) => handleOrderName(event)}>
+          <select
+            onChange={(event) => handleOrderName(event)}
+            className={style.select}
+          >
             <option key="1" value="">
               Alfabético
             </option>
@@ -87,7 +94,10 @@ const Countries = () => {
           </select>
         </div>
         <div>
-          <select onChange={(event) => handleOrderPob(event)}>
+          <select
+            className={style.select}
+            onChange={(event) => handleOrderPob(event)}
+          >
             <option value="">Población</option>
             <option value="asc">Menor a mayor</option>
             <option value="desc">Mayor a menor</option>
@@ -95,33 +105,38 @@ const Countries = () => {
         </div>
 
         <div>
-        <select onChange={handleFilterContinent}>
-        <option value="x">Continent</option>
-        <option value="All">All</option>
-        <option value="Asia">Asia</option>
-        <option value="Americas">Americas</option>
-        <option value="Africa">Africa</option>
-        <option value="Antarctic">Antarctic</option>
-        <option value="Europe">Europe</option>
-        <option value="Oceania">Oceania</option>
-       </select>
+          <select className={style.select} onChange={handleFilterContinent}>
+            {" "}
+            //pasarle o no con la flecha y el event?
+            <option value="All">Continent</option>
+            <option value="Asia">Asia</option>
+            <option value="Americas">Americas</option>
+            <option value="Africa">Africa</option>
+            <option value="Antarctic">Antarctic</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+          </select>
         </div>
 
-        <select
-        onChange={handleFilterByActivities}
-        >
-        <option value="All">
-        Turistic Activities                                                       
-        </option>                                                   
-        {activities?.map((activity, index) => (                 // mapeamos el array de actividades, y creamos una opcion por cada actividad
-          <option key={index} value={activity.name}>            
-            {activity.name}                                     
-          </option>
-        ))}
-      </select>
+        <select className={style.select} onChange={handleFilterByActivities}>
+          <option value="All">Turistic Activities</option>
+          {activities?.map((activity, index) => (
+            <option key={index} value={activity.name}>
+              {activity.name}
+            </option>
+          ))}
+        </select>
+      </div>
 
-        {paisesPActual.map((country) => {
-          return (
+      <div className={style.cardsContenedor}>
+        {paisesPActual.length === 0 ? (
+          <>
+            <h1>Not countries match</h1>
+          </>
+        ) : (
+          paisesPActual.map((country) => {
+            //mapeamos los paises que hay guardados en el estado de la pagina actual para que nos renderice las cards de 10 en 10
+            return (
               <Card
                 imageFlag={country.imageFlag}
                 name={country.name}
@@ -129,18 +144,20 @@ const Countries = () => {
                 id={country.id}
                 key={country.id}
               />
-          );
-        })}
-
-        <div>
-          <Paginated
-            paisesPagina={paisesPagina}
-            paises={countries.length}
-            paginado={paginado}
-          />
-        </div>
+            );
+          })
+        )}
       </div>
-    );
-}
 
-export default Countries 
+      <div>
+        <Paginated
+          paisesPagina={paisesPagina}
+          paises={countries.length}
+          paginado={paginado}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Countries;

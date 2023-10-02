@@ -1,22 +1,23 @@
 import { Link } from "react-router-dom";
-import style from "./LandingPage.module.css"
+import style from "./LandingPage.module.css";
+import logo from "./tourify.png";
 
 const LandingPage = () => {
   return (
     <div className={style.contenedor}>
-      <div className={style.image}>
-  
-       </div>
-      
+      <div className={style.image}></div>
+
       <div className={style.form}>
-        <img src="/tourify.PNG" alt="not found" />
-        <h1>Tourify</h1>
-        <h2> <p>Descubrí el mundo</p> <p>Creá experiencias únicas</p></h2>
+        <div className={style.contenedorLogo}>
+          <img className={style.logo} src={logo} alt="not found" />
+        </div>
+
         <Link to="/countries">
-          <button>¿Dónde te gustaría ir?</button>
+          <div className={style.contenedorBtn}>
+            <button className={style.button}>¿Dónde te gustaría ir?</button>
+          </div>
         </Link>
       </div>
-
     </div>
   );
 };

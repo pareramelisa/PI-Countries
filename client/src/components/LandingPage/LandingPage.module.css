@@ -6,14 +6,18 @@
     
 }
 .image{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    flex-direction: row;
     height: 100vh;
     width: 100%;
-    background-color: red;
-    max-width: 80vw;
-    max-height: 100vh;
-    object-fit: cover;
-    background-size: contain;
+    min-height: 100vh;
+    background-size: cover;
     background-repeat: no-repeat;
+    position: relative;
     background-image: url('./ImageLandingPage.jpg');
 }
 
@@ -23,6 +27,46 @@
     width: 40vw;
     background-color: rgb(219,223,219);
     text-align: center;
-    
+   
+}
+
+.contenedorBtn {
+    text-align: center;
     
 }
+
+.button {
+	background: #f06ed2;
+	background-image: -webkit-linear-gradient(top, #f06ed2, #61a5e0);
+	background-image: -moz-linear-gradient(top, #f06ed2, #61a5e0);
+	background-image: -ms-linear-gradient(top, #f06ed2, #61a5e0);
+	background-image: -o-linear-gradient(top, #f06ed2, #61a5e0);
+	background-image: linear-gradient(to bottom, #f06ed2, #61a5e0);
+	-webkit-border-radius: 12;
+	-moz-border-radius: 12;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 0px 0px #ffffff;
+	-moz-box-shadow: 0px 0px 0px #ffffff;
+	box-shadow: 0px 0px 0px #ffffff;
+	font-family: Arial;
+	color: #ffffff;
+	font-size: 25px;
+	padding: 8px 20px 8px 20px;
+	text-decoration: none;
+	
+  }
+  
+  .button:hover {
+	background: #58a7e3;
+	text-decoration: none;
+    border: none;
+  }
+
+
+
+.logo{
+    height: 650px;
+    width: 600px;
+    margin-bottom: 10px;
+}
+

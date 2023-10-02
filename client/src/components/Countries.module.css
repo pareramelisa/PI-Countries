@@ -1,0 +1,32 @@
+.cardsContenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  flex-direction: row;
+  background-color: #b1c8ddd0;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: repeat;
+
+}
+
+.select{
+  border-radius: 12px;
+  padding: 5px;
+  font-size: 18px;
+  transition: .6s;
+  padding: .3rem 1rem;
+}
+
+.contenedorFilter{
+
+  display: flex;
+  border-radius: 15px;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 20px;
+
+}

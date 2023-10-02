@@ -1,4 +1,4 @@
-const { Country } = require("../db")
+const { Country, Activity } = require("../db")
 
 const getCountriesById = async (req, res) => {
 
@@ -8,7 +8,12 @@ const getCountriesById = async (req, res) => {
     
     try {
 
-        const country = await Country.findByPk(id)
+        const country = await Country.findByPk(id,
+            {include:
+                {model: Activity,
+                        attributes:
+                    ["name", "difficult", "duration", "season"]
+                    }})
         if(!country) {
             return res.status(404).send('Error: country not found')
         }

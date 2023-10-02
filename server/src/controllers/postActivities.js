@@ -4,7 +4,7 @@ const postActivities = async (req, res) => {
   try {
     const { name, difficult, duration, season, countries } = req.body
 
-    console.log(difficult)
+    console.log(req.body)
 
     if (!name || !difficult || !duration || !season || !countries) {
       return res

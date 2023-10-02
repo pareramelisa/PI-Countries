@@ -4,8 +4,12 @@ const getActivities = async (req, res) => {
 
     try {
         const activities = await Activity.findAll({                     
-            include: Country                                               
-            })
+          include:
+          {model: Country,
+              attributes:
+              ["id", "name", "imageFlag", "continent"]
+          }
+      })
     
         res.status(200).json(activities);
 
